@@ -47,9 +47,7 @@ int main(){
         }
         if(!isnan(result)){
             printf("\nResult of operation is : %.2f", result);
-        }
-        
-        
+        }  
     }
     
     return 0;
@@ -79,7 +77,6 @@ double division(double a, double b){
          return a / b;
     } 
 }
-
 
 double modulus(int a, int b){
 
