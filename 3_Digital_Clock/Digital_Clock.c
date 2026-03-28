@@ -1,16 +1,26 @@
 #include <stdio.h>
 #include <time.h>
+#include<unistd.h>
+#include<stdlib.h>
 void fill_time(char *, size_t, int);
 void fill_date(char *, size_t);
 int input_format();
+void clear_screen();
+
 int main()
 {
     char time[50], date[100];
     int format = input_format();
+    while(1){
     fill_time(time, sizeof(time), format);
     fill_date(date, sizeof(date));
-    printf("\nCurrent Time : %s", time);
+    clear_screen();
+    printf("\n\nCurrent Time : %s", time);
     printf("\nDate : %s", date);
+    sleep(1);
+
+    }
+
     return 0;
 }
 int input_format()
@@ -46,4 +56,12 @@ void fill_date(char * buffer, size_t size){
     time(&raw_date);
     current_date = localtime(&raw_date);
     strftime(buffer, size, "%A %B %d %Y", current_date);
+}
+
+void clear_screen(){
+    #ifdef _WIN
+    system("cls");
+    #else
+    system("clear");
+    #endif
 }
